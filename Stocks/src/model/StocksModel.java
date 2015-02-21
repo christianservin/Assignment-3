@@ -12,7 +12,7 @@ public class StocksModel
 	private double stock2price;
 	private double stock3price;
 	
-	public StocksModel(double investment, String stock1, String stock2, String stock3) 
+	public StocksModel(double investment, String stock1, String stock2, String stock3)
 	{
 		this.investment = Math.round((investment)*100.00)/100.00;
 		this.stock1 = stock1;

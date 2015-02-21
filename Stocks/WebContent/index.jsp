@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Investments</title>
+<title>Stocks Investments</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>Stocks Investment</h1>
+	<h1>Stocks Investments</h1>
 	<form action="main" method="post">
 		<table>
 			<tr>
 				<td>Amount to Invest:</td>
-				<td><input type="number" name="investment" value="10000.00"/></td>
+				<td><input type="number" name="investment" value="10000.00" /></td>
 			</tr>
 		</table>
 		<br>
@@ -23,11 +24,11 @@
 			</tr>
 			<tr>
 				<td>Stock2:</td>
-				<td><input type="text" name="stock2" value="AAPL"/></td>
+				<td><input type="text" name="stock2" value="AAPL" /></td>
 			</tr>
 			<tr>
 				<td>Stock3:</td>
-				<td><input type="text" name="stock3" value="MSFT"/></td>
+				<td><input type="text" name="stock3" value="MSFT" /></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -35,9 +36,8 @@
 			</tr>
 		</table>
 	</form>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
-<!-- jQuery and Bootstrap JavaScript/css -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
