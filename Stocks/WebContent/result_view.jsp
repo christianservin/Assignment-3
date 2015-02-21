@@ -9,10 +9,10 @@
 <body>
 	<%StocksModel stocks = (StocksModel) request.getAttribute("stocks");%>
 	
-	<h1>Investment: <%=stocks.getInvestment()%>!</h1>
-	<h2>Stock1: <%=stocks.getStock1()%></h2>
-	<h2>Stock2: <%=stocks.getStock2()%></h2>
-	<h2>Stock3: <%=stocks.getStock3()%></h2>
+	<h1>Investment: $<%=stocks.getInvestment()%>!</h1>
+	<h2>Stock1: <%=stocks.getStock1()%> = $<%=stocks.getStock1price()%></h2>
+	<h2>Stock2: <%=stocks.getStock2()%> = $<%=stocks.getStock2price()%></h2>
+	<h2>Stock3: <%=stocks.getStock3()%> = $<%=stocks.getStock3price()%></h2>
 </body>
 
 <!-- jQuery and Bootstrap JavaScript -->

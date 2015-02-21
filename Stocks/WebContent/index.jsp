@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login Page</title>
+<title>Investments</title>
 </head>
 <body>
 	<h1>Stocks Investment</h1>
@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td>Stock2:</td>
-				<td><input type="text" name="stock2" value="APPL"/></td>
+				<td><input type="text" name="stock2" value="AAPL"/></td>
 			</tr>
 			<tr>
 				<td>Stock3:</td>
