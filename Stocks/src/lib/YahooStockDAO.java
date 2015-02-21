@@ -6,11 +6,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
-//import org.apache.commons.logging.Log;
-//import org.apache.commons.logging.LogFactory;
- 
+
 public class YahooStockDAO {
-    //private static final Log log = LogFactory.getLog(StockTickerDAO.class);
     private static final YahooStockDAO stockDAO = new YahooStockDAO();
     private static HashMap<String, YahooStockModel> stocks = new HashMap<String, YahooStockModel>();
     private static final long TWENTY_MIN = 1200000;
@@ -64,7 +61,7 @@ public class YahooStockDAO {
             }
             in.close();
         } catch (Exception ex) {
-            //log.error("Unable to get stockinfo for: " + symbol + ex);
+        	System.out.println("Unable to get stock info gor: " + symbol + ex);
         }
         return stocks.get(symbol);
      }

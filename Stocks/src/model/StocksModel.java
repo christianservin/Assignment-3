@@ -14,7 +14,7 @@ public class StocksModel
 	
 	public StocksModel(double investment, String stock1, String stock2, String stock3) 
 	{
-		this.investment = investment;
+		this.investment = Math.round((investment)*100.00)/100.00;
 		this.stock1 = stock1;
 		this.stock2 = stock2;
 		this.stock3 = stock3;

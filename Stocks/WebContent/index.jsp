@@ -12,7 +12,7 @@
 		<table>
 			<tr>
 				<td>Amount to Invest:</td>
-				<td><input type="number" name="investment" value="10000"/></td>
+				<td><input type="number" name="investment" value="10000.00"/></td>
 			</tr>
 		</table>
 		<br>
