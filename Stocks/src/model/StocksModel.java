@@ -1,13 +1,13 @@
 package model;
 
-public class Stocks 
+public class StocksModel 
 {
 	private double investment;
 	private String stock1;
 	private String stock2;
 	private String stock3;
 	
-	public Stocks(double investment, String stock1, String stock2, String stock3) 
+	public StocksModel(double investment, String stock1, String stock2, String stock3) 
 	{
 		this.investment = investment;
 		this.stock1 = stock1;

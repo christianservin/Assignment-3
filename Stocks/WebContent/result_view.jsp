@@ -1,13 +1,13 @@
-<%@page import="model.Stocks"%>
+<%@page import="model.StocksModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login Success</title>
+<title>Investments</title>
 </head>
 <body>
-	<%Stocks stocks = (Stocks) request.getAttribute("stocks");%>
+	<%StocksModel stocks = (StocksModel) request.getAttribute("stocks");%>
 	
 	<h1>Investment: <%=stocks.getInvestment()%>!</h1>
 	<h2>Stock1: <%=stocks.getStock1()%></h2>
