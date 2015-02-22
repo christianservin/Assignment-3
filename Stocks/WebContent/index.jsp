@@ -12,22 +12,22 @@
 	<form action="main" method="post">
 		<table>
 			<tr>
-				<td>Amount to Invest:</td>
-				<td><input type="number" name="investment" value="10000.00" /></td>
+				<td>Amount to Invest:&nbsp</td>
+				<td><input type="number" name="totalInvestment" value="10000.00" /></td>
 			</tr>
 		</table>
 		<br>
 		<table>
 			<tr>
-				<td>Stock1:</td>
+				<td>Stock1:&nbsp</td>
 				<td><input type="text" name="stock1" value="GOOG" /></td>
 			</tr>
 			<tr>
-				<td>Stock2:</td>
+				<td>Stock2:&nbsp</td>
 				<td><input type="text" name="stock2" value="AAPL" /></td>
 			</tr>
 			<tr>
-				<td>Stock3:</td>
+				<td>Stock3:&nbsp</td>
 				<td><input type="text" name="stock3" value="MSFT" /></td>
 			</tr>
 			<tr>

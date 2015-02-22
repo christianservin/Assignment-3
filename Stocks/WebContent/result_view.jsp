@@ -1,5 +1,6 @@
 <%@page import="model.StocksModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	<%StocksModel stocks = (StocksModel) request.getAttribute("stocks");%>
+	<%StocksModel stocks = (StocksModel)request.getAttribute("stocks");%>
 
-	<h1>Investment: $<%=stocks.getInvestment()%>!</h1>
+	<h1>Total Investment: $<%=stocks.getInvestment()%></h1>
 	<h2>Stock1: <%=stocks.getStock1()%> = $<%=stocks.getStock1price()%></h2>
 	<h2>Stock2: <%=stocks.getStock2()%> = $<%=stocks.getStock2price()%></h2>
 	<h2>Stock3: <%=stocks.getStock3()%> = $<%=stocks.getStock3price()%></h2>

@@ -4,17 +4,21 @@ import lib.YahooStockDAO;
 
 public class StocksModel 
 {
-	private double investment;
+	private double totalInvestment;
 	private String stock1;
 	private String stock2;
 	private String stock3;
 	private double stock1price;
 	private double stock2price;
 	private double stock3price;
+	private double stock1investment;
+	private double stock2investment;
+	private double stock3investment;
 	
 	public StocksModel(double investment, String stock1, String stock2, String stock3)
 	{
-		this.investment = Math.round((investment)*100.00)/100.00;
+		this.totalInvestment = Math.round((investment)*100.00)/100.00;
+		
 		this.stock1 = stock1;
 		this.stock2 = stock2;
 		this.stock3 = stock3;
@@ -22,14 +26,18 @@ public class StocksModel
 		this.stock1price = Math.round((double)(YahooStockDAO.getInstance().getStockPrice(stock1).getPrice())*100.00)/100.00;
 		this.stock2price = Math.round((double)(YahooStockDAO.getInstance().getStockPrice(stock2).getPrice())*100.00)/100.00;
 		this.stock3price = Math.round((double)(YahooStockDAO.getInstance().getStockPrice(stock3).getPrice())*100.00)/100.00;
+		
+		this.setStock1investment(this.totalInvestment/3);
+		this.setStock2investment(this.totalInvestment/3);
+		this.setStock3investment(this.totalInvestment/3);
 	}
 
 	public double getInvestment() {
-		return investment;
+		return totalInvestment;
 	}
 
 	public void setInvestment(double investment) {
-		this.investment = investment;
+		this.totalInvestment = investment;
 	}
 
 	public String getStock1() {
@@ -78,5 +86,29 @@ public class StocksModel
 
 	public void setStock3price(double stock3price) {
 		this.stock3price = stock3price;
+	}
+
+	public double getStock1investment() {
+		return stock1investment;
+	}
+
+	public void setStock1investment(double stock1investment) {
+		this.stock1investment = stock1investment;
+	}
+
+	public double getStock2investment() {
+		return stock2investment;
+	}
+
+	public void setStock2investment(double stock2investment) {
+		this.stock2investment = stock2investment;
+	}
+
+	public double getStock3investment() {
+		return stock3investment;
+	}
+
+	public void setStock3investment(double stock3investment) {
+		this.stock3investment = stock3investment;
 	}
 }

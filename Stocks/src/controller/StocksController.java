@@ -17,7 +17,7 @@ public class StocksController extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		double investment = Double.parseDouble(request.getParameter("investment"));
+		double investment = Double.parseDouble(request.getParameter("totalInvestment"));
 		String stock1 = request.getParameter("stock1");
 		String stock2 = request.getParameter("stock2");
 		String stock3 = request.getParameter("stock3");
