@@ -46,12 +46,13 @@ public class StocksController extends HttpServlet
 		{
 			stocks = new StocksModel(investment, stock1, stock2, stock3);
 			
+			divideStocks();
+			
 			request.setAttribute("stocks", stocks);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("result_view.jsp");
 			requestDispatcher.forward(request, response);
-			divideStocks();
-			
-		} catch (Exception e) 
+		} 
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 			response.sendRedirect("index.jsp");
@@ -66,7 +67,7 @@ public class StocksController extends HttpServlet
 		stockPrice3 = stocks.getStock3price();
 		
 		//Getting Investment Amount
-		investmentAmount = stocks.getInvestment();
+		investmentAmount = stocks.getInvestmentTotal();
 		
 		//Dividing investment by 3
 		double investmentDivBy3 = investmentAmount/3;
