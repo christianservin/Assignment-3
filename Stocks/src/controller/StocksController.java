@@ -14,8 +14,6 @@ import model.StocksModel;
 public class StocksController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-		
-	StocksModel stocks;
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -27,9 +25,9 @@ public class StocksController extends HttpServlet
 
 		try 
 		{
-			stocks = new StocksModel(investment, stock1, stock2, stock3);
+			StocksModel stocks = new StocksModel(investment, stock1, stock2, stock3);
 			
-			divideStocks();
+			divideStocks(stocks);
 			
 			request.setAttribute("stocks", stocks);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("result_view.jsp");
@@ -42,7 +40,7 @@ public class StocksController extends HttpServlet
 		}
 	}
 	
-	private void divideStocks()
+	private void divideStocks(StocksModel stocks)
 	{
 		//Getting Stock Prices
 		double stock1price = stocks.getStock1price();
