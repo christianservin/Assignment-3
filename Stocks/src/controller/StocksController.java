@@ -14,23 +14,6 @@ import model.StocksModel;
 public class StocksController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-	
-	//Getting Stock Prices
-	double stockPrice1 = 0;
-	double stockPrice2 = 0;
-	double stockPrice3 = 0;
-	//Getting Investment Amount
-	double investmentAmount = 0;
-	//Number of stock shares in integer form
-	int stock1sh = 0;
-	int stock2sh = 0;
-	int stock3sh = 0;
-	//Total left after all allocations into stocks
-	double lastRemainder = 0;
-	//Total spent on each stock
-	double totStock1 = 0;
-	double totStock2 = 0;
-	double totStock3 = 0;
 		
 	StocksModel stocks;
 	
@@ -62,15 +45,15 @@ public class StocksController extends HttpServlet
 	private void divideStocks()
 	{
 		//Getting Stock Prices
-		stockPrice1 = stocks.getStock1price();
-		stockPrice2 = stocks.getStock2price();
-		stockPrice3 = stocks.getStock3price();
+		double stock1price = stocks.getStock1price();
+		double stock2price = stocks.getStock2price();
+		double stock3price = stocks.getStock3price();
 		
 		//Getting Investment Amount
-		investmentAmount = stocks.getInvestmentTotal();
+		double investmentTotal = stocks.getInvestmentTotal();
 		
 		//Dividing investment by 3
-		double investmentDivBy3 = investmentAmount/3;
+		double investmentTotalDivBy3 = investmentTotal/3;
 		
 		//Number of stock shares in double form
 		double stock1Shares = 0;
@@ -78,51 +61,59 @@ public class StocksController extends HttpServlet
 		double stock3Shares = 0;
 		
 		//Number of stock shares in integer form
-		stock1sh = 0;
-		stock2sh = 0;
-		stock3sh = 0;
+		int stock1sh = 0;
+		int stock2sh = 0;
+		int stock3sh = 0;
 		
 		//Remainder of stocks
 		double stock1Rem = 0;
 		double stock2Rem = 0;
 		double stock3Rem = 0;
 		
-		if(stockPrice1 > stockPrice2 && stockPrice1 > stockPrice3)
+		//Total spent on each stock
+		double totStock1 = 0;
+		double totStock2 = 0;
+		double totStock3 = 0;
+		
+		//Total left after all allocations into stocks
+		double lastRemainder = 0;
+		
+		if(stock1price > stock2price && stock1price > stock3price)
 		{
 			
-			stock1Shares = investmentDivBy3/stockPrice1;
+			stock1Shares = investmentTotalDivBy3/stock1price;
 			stock1sh = (int)stock1Shares;
-			totStock1 = stock1sh*stockPrice1;
-			stock1Rem = investmentDivBy3-(totStock1);
+			totStock1 = stock1sh*stock1price;
+			stock1Rem = investmentTotalDivBy3-(totStock1);
 			
-			if(stockPrice2 > stockPrice3)
+			if(stock2price > stock3price)
 			{
-				stock2Shares = (investmentDivBy3 + stock1Rem)/stockPrice2;
+				stock2Shares = (investmentTotalDivBy3 + stock1Rem)/stock2price;
 				stock2sh = (int)stock2Shares;
-				totStock2 = stock2sh*stockPrice2;
-				stock2Rem = (investmentDivBy3+ stock1Rem)-(totStock2);
+				totStock2 = stock2sh*stock2price;
+				stock2Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock2);
 				
-				stock3Shares = (investmentDivBy3 + stock2Rem)/stockPrice3;
+				stock3Shares = (investmentTotalDivBy3 + stock2Rem)/stock3price;
 				stock3sh = (int)stock3Shares;
-				totStock3 = stock3sh*stockPrice3;
-				stock3Rem = (investmentDivBy3+ stock2Rem)-(totStock3);
+				totStock3 = stock3sh*stock3price;
+				stock3Rem = (investmentTotalDivBy3+ stock2Rem)-(totStock3);
 				lastRemainder = stock3Rem;
 				
 				//JOptionPane.showMessageDialog(null, " Total Remaining " + lastRemainder );
 				
 				
 			}
-			else if(stockPrice3 > stockPrice2)
+			else if(stock3price > stock2price)
 			{
-				stock3Shares = (investmentDivBy3 + stock1Rem)/stockPrice3;
+				stock3Shares = (investmentTotalDivBy3 + stock1Rem)/stock3price;
 				stock3sh = (int)stock3Shares;
-				totStock3 = stock3sh*stockPrice3;
-				stock3Rem = (investmentDivBy3 + stock1Rem)-(totStock3);
+				totStock3 = stock3sh*stock3price;
+				stock3Rem = (investmentTotalDivBy3 + stock1Rem)-(totStock3);
 				
-				stock2Shares = (investmentDivBy3 + stock3Rem)/stockPrice2;
+				stock2Shares = (investmentTotalDivBy3 + stock3Rem)/stock2price;
 				stock2sh = (int)stock2Shares;
-				totStock2 = stock2sh*stockPrice2;
-				stock2Rem = (investmentDivBy3+ stock3Rem)-(totStock2);
+				totStock2 = stock2sh*stock2price;
+				stock2Rem = (investmentTotalDivBy3+ stock3Rem)-(totStock2);
 				lastRemainder = stock2Rem;
 				
 				//JOptionPane.showMessageDialog(null, "2 " + lastRemainder);
@@ -131,76 +122,76 @@ public class StocksController extends HttpServlet
 			
 		}
 		
-		else if(stockPrice2 > stockPrice1 && stockPrice2 > stockPrice3)
+		else if(stock2price > stock1price && stock2price > stock3price)
 		{
-			stock2Shares = investmentDivBy3/stockPrice2;
+			stock2Shares = investmentTotalDivBy3/stock2price;
 			stock2sh = (int)stock2Shares;
-			totStock2 = stock2sh*stockPrice2;
-			stock2Rem = investmentDivBy3-(totStock2);
+			totStock2 = stock2sh*stock2price;
+			stock2Rem = investmentTotalDivBy3-(totStock2);
 			
-			if(stockPrice1 > stockPrice3)
+			if(stock1price > stock3price)
 			{
-				stock1Shares = (investmentDivBy3 + stock2Rem)/stockPrice1;
+				stock1Shares = (investmentTotalDivBy3 + stock2Rem)/stock1price;
 				stock1sh = (int)stock1Shares;
-				totStock1 = stock1sh*stockPrice1;
-				stock1Rem = (investmentDivBy3+ stock2Rem)-(totStock1);
+				totStock1 = stock1sh*stock1price;
+				stock1Rem = (investmentTotalDivBy3+ stock2Rem)-(totStock1);
 				
-				stock3Shares = (investmentDivBy3 + stock1Rem)/stockPrice3;
+				stock3Shares = (investmentTotalDivBy3 + stock1Rem)/stock3price;
 				stock3sh = (int)stock3Shares;
-				totStock3 = stock3sh*stockPrice3;
-				stock3Rem = (investmentDivBy3+ stock1Rem)-(totStock3);
+				totStock3 = stock3sh*stock3price;
+				stock3Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock3);
 				lastRemainder = stock3Rem;
 				//JOptionPane.showMessageDialog(null, "3 " + lastRemainder);
 				
 			}
-			else if(stockPrice3 > stockPrice1)
+			else if(stock3price > stock1price)
 			{
-				stock3Shares = (investmentDivBy3 + stock2Rem)/stockPrice3;
+				stock3Shares = (investmentTotalDivBy3 + stock2Rem)/stock3price;
 				stock3sh = (int)stock3Shares;
-				totStock3 = stock3sh*stockPrice3;
-				stock3Rem = (investmentDivBy3 + stock2Rem)-(totStock3);
+				totStock3 = stock3sh*stock3price;
+				stock3Rem = (investmentTotalDivBy3 + stock2Rem)-(totStock3);
 				
-				stock1Shares = (investmentDivBy3 + stock3Rem)/stockPrice1;
+				stock1Shares = (investmentTotalDivBy3 + stock3Rem)/stock1price;
 				stock1sh = (int)stock1Shares;
-				totStock1 = stock1sh*stockPrice1;
-				stock1Rem = (investmentDivBy3+ stock3Rem)-(totStock1);
+				totStock1 = stock1sh*stock1price;
+				stock1Rem = (investmentTotalDivBy3+ stock3Rem)-(totStock1);
 				lastRemainder = stock1Rem;
 				//JOptionPane.showMessageDialog(null, "4 " + lastRemainder);
 			}
 		}
 		
-		else if(stockPrice3 > stockPrice2 && stockPrice3 > stockPrice1)
+		else if(stock3price > stock2price && stock3price > stock1price)
 		{
-			stock3Shares = investmentDivBy3/stockPrice3;
+			stock3Shares = investmentTotalDivBy3/stock3price;
 			stock3sh = (int)stock3Shares;
-			totStock3 = stock3sh*stockPrice3;
-			stock3Rem = investmentDivBy3-(totStock3);
+			totStock3 = stock3sh*stock3price;
+			stock3Rem = investmentTotalDivBy3-(totStock3);
 			
-			if(stockPrice1 > stockPrice2)
+			if(stock1price > stock2price)
 			{
-				stock1Shares = (investmentDivBy3 + stock3Rem)/stockPrice1;
+				stock1Shares = (investmentTotalDivBy3 + stock3Rem)/stock1price;
 				stock1sh = (int)stock1Shares;
-				totStock1 = stock1sh*stockPrice1;
-				stock1Rem = (investmentDivBy3+ stock3Rem)-(totStock1);
+				totStock1 = stock1sh*stock1price;
+				stock1Rem = (investmentTotalDivBy3+ stock3Rem)-(totStock1);
 				
-				stock2Shares = (investmentDivBy3 + stock1Rem)/stockPrice2;
+				stock2Shares = (investmentTotalDivBy3 + stock1Rem)/stock2price;
 				stock2sh = (int)stock2Shares;
-				totStock2 = stock2sh*stockPrice2;
-				stock2Rem = (investmentDivBy3+ stock1Rem)-(totStock2);
+				totStock2 = stock2sh*stock2price;
+				stock2Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock2);
 				lastRemainder = stock2Rem;
 				//JOptionPane.showMessageDialog(null, "5 " + lastRemainder);
 			}
-			else if(stockPrice2 > stockPrice1)
+			else if(stock2price > stock1price)
 			{
-				stock2Shares = (investmentDivBy3 + stock3Rem)/stockPrice2;
+				stock2Shares = (investmentTotalDivBy3 + stock3Rem)/stock2price;
 				stock2sh = (int)stock2Shares;
-				totStock2 = stock2sh*stockPrice2;
-				stock2Rem = (investmentDivBy3 + stock3Rem)-(totStock2);
+				totStock2 = stock2sh*stock2price;
+				stock2Rem = (investmentTotalDivBy3 + stock3Rem)-(totStock2);
 				
-				stock1Shares = (investmentDivBy3 + stock2Rem)/stockPrice1;
+				stock1Shares = (investmentTotalDivBy3 + stock2Rem)/stock1price;
 				stock1sh = (int)stock1Shares;
-				totStock1 = stock1sh*stockPrice1;
-				stock1Rem = (investmentDivBy3+ stock2Rem)-(totStock1);
+				totStock1 = stock1sh*stock1price;
+				stock1Rem = (investmentTotalDivBy3+ stock2Rem)-(totStock1);
 				lastRemainder = stock1Rem;
 				//JOptionPane.showMessageDialog(null, "6 " + lastRemainder);
 				
