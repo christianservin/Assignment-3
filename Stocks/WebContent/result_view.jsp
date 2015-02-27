@@ -12,9 +12,10 @@
 	<%StocksModel stocks = (StocksModel)request.getAttribute("stocks");%>
 
 	<h1>Total Investment: $<%=stocks.getInvestmentTotal()%></h1>
-	<h2>Stock1: <%=stocks.getStock1()%> = $<%=stocks.getStock1price()%></h2>
-	<h2>Stock2: <%=stocks.getStock2()%> = $<%=stocks.getStock2price()%></h2>
-	<h2>Stock3: <%=stocks.getStock3()%> = $<%=stocks.getStock3price()%></h2>
+	<h2>Stock1: <%=stocks.getStock1()%> = $<%=stocks.getStock1price()%> Shares: <%=stocks.getStock1shares()%> Investment: <%=stocks.getStock1investment()%></h2>
+	<h2>Stock2: <%=stocks.getStock2()%> = $<%=stocks.getStock2price()%> Shares: <%=stocks.getStock2shares()%> Investment: <%=stocks.getStock2investment()%></h2>
+	<h2>Stock3: <%=stocks.getStock3()%> = $<%=stocks.getStock3price()%> Shares: <%=stocks.getStock3shares()%> Investment: <%=stocks.getStock3investment()%></h2>
+	<h1>Investment Remainder: $<%=stocks.getInvestmentRemainder()%></h1>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

@@ -1,12 +1,14 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.StocksModel;
 
 @WebServlet("/main")
@@ -46,11 +48,8 @@ public class StocksController extends HttpServlet
 		double stock2price = stocks.getStock2price();
 		double stock3price = stocks.getStock3price();
 		
-		//Getting Investment Amount
-		double investmentTotal = stocks.getInvestmentTotal();
-		
 		//Dividing investment by 3
-		double investmentTotalDivBy3 = investmentTotal/3;
+		double investmentTotalDivBy3 = stocks.getInvestmentTotal()/3;
 		
 		//Number of stock shares in double form
 		double stock1Shares = 0;
@@ -87,7 +86,7 @@ public class StocksController extends HttpServlet
 				stock2Shares = (investmentTotalDivBy3 + stock1Rem)/stock2price;
 				stock2sh = (int)stock2Shares;
 				totStock2 = stock2sh*stock2price;
-				stock2Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock2);
+				stock2Rem = (investmentTotalDivBy3 + stock1Rem)-(totStock2);
 				
 				stock3Shares = (investmentTotalDivBy3 + stock2Rem)/stock3price;
 				stock3sh = (int)stock3Shares;
@@ -179,5 +178,15 @@ public class StocksController extends HttpServlet
 				lastRemainder = stock1Rem;				
 			}
 		}
+		
+		
+		//Send calculated data to the object model
+		stocks.setStock1shares(stock1sh);
+		stocks.setStock2shares(stock2sh);
+		stocks.setStock3shares(stock3sh);
+		stocks.setStock1investment(Math.round((totStock1)*100.00)/100.00);
+		stocks.setStock2investment(Math.round((totStock2)*100.00)/100.00);
+		stocks.setStock3investment(Math.round((totStock3)*100.00)/100.00);
+		stocks.setInvestmentRemainder(Math.round((lastRemainder)*100.00)/100.00);
 	}
 }
