@@ -1,6 +1,5 @@
 package controller;
 
-import javax.swing.JOptionPane;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -78,7 +77,6 @@ public class StocksController extends HttpServlet
 		
 		if(stock1price > stock2price && stock1price > stock3price)
 		{
-			
 			stock1Shares = investmentTotalDivBy3/stock1price;
 			stock1sh = (int)stock1Shares;
 			totStock1 = stock1sh*stock1price;
@@ -96,10 +94,6 @@ public class StocksController extends HttpServlet
 				totStock3 = stock3sh*stock3price;
 				stock3Rem = (investmentTotalDivBy3+ stock2Rem)-(totStock3);
 				lastRemainder = stock3Rem;
-				
-				//JOptionPane.showMessageDialog(null, " Total Remaining " + lastRemainder );
-				
-				
 			}
 			else if(stock3price > stock2price)
 			{
@@ -112,12 +106,8 @@ public class StocksController extends HttpServlet
 				stock2sh = (int)stock2Shares;
 				totStock2 = stock2sh*stock2price;
 				stock2Rem = (investmentTotalDivBy3+ stock3Rem)-(totStock2);
-				lastRemainder = stock2Rem;
-				
-				//JOptionPane.showMessageDialog(null, "2 " + lastRemainder);
+				lastRemainder = stock2Rem;				
 			}
-			
-			
 		}
 		
 		else if(stock2price > stock1price && stock2price > stock3price)
@@ -139,8 +129,6 @@ public class StocksController extends HttpServlet
 				totStock3 = stock3sh*stock3price;
 				stock3Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock3);
 				lastRemainder = stock3Rem;
-				//JOptionPane.showMessageDialog(null, "3 " + lastRemainder);
-				
 			}
 			else if(stock3price > stock1price)
 			{
@@ -154,7 +142,6 @@ public class StocksController extends HttpServlet
 				totStock1 = stock1sh*stock1price;
 				stock1Rem = (investmentTotalDivBy3+ stock3Rem)-(totStock1);
 				lastRemainder = stock1Rem;
-				//JOptionPane.showMessageDialog(null, "4 " + lastRemainder);
 			}
 		}
 		
@@ -177,7 +164,6 @@ public class StocksController extends HttpServlet
 				totStock2 = stock2sh*stock2price;
 				stock2Rem = (investmentTotalDivBy3+ stock1Rem)-(totStock2);
 				lastRemainder = stock2Rem;
-				//JOptionPane.showMessageDialog(null, "5 " + lastRemainder);
 			}
 			else if(stock2price > stock1price)
 			{
@@ -190,12 +176,8 @@ public class StocksController extends HttpServlet
 				stock1sh = (int)stock1Shares;
 				totStock1 = stock1sh*stock1price;
 				stock1Rem = (investmentTotalDivBy3+ stock2Rem)-(totStock1);
-				lastRemainder = stock1Rem;
-				//JOptionPane.showMessageDialog(null, "6 " + lastRemainder);
-				
+				lastRemainder = stock1Rem;				
 			}
 		}
-		
 	}
-	
 }
