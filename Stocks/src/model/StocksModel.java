@@ -172,5 +172,4 @@ public class StocksModel
 	public void setStock3investment(double stock3investment) {
 		this.stock3investment = stock3investment;
 	}
-
 }
