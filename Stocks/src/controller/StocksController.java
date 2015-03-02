@@ -177,7 +177,6 @@ public class StocksController extends HttpServlet
 			}
 		}
 		
-		
 		//Send calculated data to the object model
 		stocks.setStock1shares(stock1sh);
 		stocks.setStock2shares(stock2sh);

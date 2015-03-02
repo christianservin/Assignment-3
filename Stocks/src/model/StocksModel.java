@@ -19,10 +19,9 @@ public class StocksModel
 	private double stock2investment;
 	private double stock3investment;
 	
-	
-	public StocksModel(double investment, String stock1, String stock2, String stock3)
+	public StocksModel(double investmentTotal, String stock1, String stock2, String stock3)
 	{
-		this.investmentTotal = Math.round((investment)*100.00)/100.00;
+		this.investmentTotal = Math.round((investmentTotal)*100.00)/100.00;
 		
 		this.stock1 = stock1;
 		this.stock2 = stock2;

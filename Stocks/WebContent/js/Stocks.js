@@ -1,4 +1,5 @@
-function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) {
+function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
+{
     $('#piechart').highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -6,7 +7,7 @@ function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
             plotShadow: false
         },
         title: {
-            text: ''
+            text: 'Pie Chart'
         },
         tooltip: {
             //pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -26,7 +27,7 @@ function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
         },
         series: [{
             type: 'pie',
-            name: 'Shares',
+            name: '$',
             data: [
                 [stock1,   		stock1value],
                 [stock2,   		stock2value],
@@ -34,5 +35,32 @@ function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
                 ['Remainder',   remainder]
             ]
         }]
+    });
+}
+
+function barchart() 
+{
+	$('#barchart').highcharts({
+        data: {
+            table: 'datatable'
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Bar Chart'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.point.y + ' ' + this.point.name.toLowerCase();
+            }
+        }
     });
 }
