@@ -1,6 +1,31 @@
+$('#datatable').editableTableWidget();
+$(document).ready(function() {
+	main();
+});
+
+function main() {
+	// piechart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
+	piechart(document.getElementById("stock1").innerHTML, 
+			document.getElementById("stock2").innerHTML,
+			document.getElementById("stock3").innerHTML,
+			parseFloat(document.getElementById("stock1investment").innerHTML),
+			parseFloat(document.getElementById("stock2investment").innerHTML),
+			parseFloat(document.getElementById("stock3investment").innerHTML),
+			parseFloat(document.getElementById("investmentRemainder").innerHTML));
+	barchart();
+}
+
 function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
 {
-    $('#piechart').highcharts({
+    console.log(stock1);
+    console.log(stock2);
+    console.log(stock3);
+    console.log(stock1value);
+    console.log(stock2value);
+    console.log(stock3value);
+    console.log(remainder);
+	
+	$('#piechart').highcharts({
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,

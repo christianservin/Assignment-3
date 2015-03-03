@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Stocks Investments</title>
+<title>Stocks Investment</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>Stocks Investments</h1>
+	<h1>Stocks Investment</h1>
 	<form action="main" method="post">
 		<table>
 			<tr>
