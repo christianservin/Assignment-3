@@ -74,8 +74,5 @@
 	<script src="http://code.highcharts.com/modules/data.js"></script>
 	<script src="js/mindmup-editabletable.js"></script>
 	<script src="js/Stocks.js"></script>
-	<script type="text/javascript">
-		
-	</script>
 </body>
 </html>
