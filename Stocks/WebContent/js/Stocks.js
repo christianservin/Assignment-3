@@ -16,15 +16,7 @@ function main() {
 }
 
 function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
-{
-    console.log(stock1);
-    console.log(stock2);
-    console.log(stock3);
-    console.log(stock1value);
-    console.log(stock2value);
-    console.log(stock3value);
-    console.log(remainder);
-	
+{	
 	$('#piechart').highcharts({
         chart: {
             plotBackgroundColor: null,
