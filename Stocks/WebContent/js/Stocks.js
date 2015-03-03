@@ -1,4 +1,5 @@
 $('#datatable').editableTableWidget();
+
 $(document).ready(function() {
 	main();
 });

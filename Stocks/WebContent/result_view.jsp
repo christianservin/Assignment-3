@@ -57,7 +57,7 @@
 	<button onclick="main()">Save</button>
 	<br>
 
-	<div class="container">
+	<div class="chartsContainer">
 		<div class="row">
 			<div class="col-sm-6">
 				<div id="piechart" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>

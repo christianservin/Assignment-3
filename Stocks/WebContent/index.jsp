@@ -6,28 +6,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Stocks Investment</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/Stocks.css">
 </head>
 <body>
 	<h1>Stocks Investment</h1>
 	<form action="main" method="post">
 		<table>
 			<tr>
-				<td>Amount to Invest:&nbsp</td>
+				<td>Amount to Invest:</td>
 				<td><input type="number" name="totalInvestment" value="10000.00" /></td>
 			</tr>
 		</table>
 		<br>
 		<table>
 			<tr>
-				<td>Stock1:&nbsp</td>
+				<td>Stock1:</td>
 				<td><input type="text" name="stock1" value="GOOG" /></td>
 			</tr>
 			<tr>
-				<td>Stock2:&nbsp</td>
+				<td>Stock2:</td>
 				<td><input type="text" name="stock2" value="AAPL" /></td>
 			</tr>
 			<tr>
-				<td>Stock3:&nbsp</td>
+				<td>Stock3:</td>
 				<td><input type="text" name="stock3" value="MSFT" /></td>
 			</tr>
 			<tr>

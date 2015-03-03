@@ -1,4 +1,7 @@
-#heading h3,h4 
-{ 
+#heading h3,h4 { 
 	display: inline; 
+}
+
+td {
+    padding: 2px;
 }
