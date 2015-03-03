@@ -4,7 +4,6 @@ $(document).ready(function() {
 });
 
 function main() {
-	// piechart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
 	piechart(document.getElementById("stock1").innerHTML, 
 			document.getElementById("stock2").innerHTML,
 			document.getElementById("stock3").innerHTML,
