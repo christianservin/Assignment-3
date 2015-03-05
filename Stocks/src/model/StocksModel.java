@@ -1,6 +1,9 @@
 package model;
 
+import java.sql.SQLException;
+
 import lib.YahooStockDAO;
+import lib.DBConnection;
 
 public class StocksModel 
 {
@@ -170,5 +173,21 @@ public class StocksModel
 
 	public void setStock3investment(double stock3investment) {
 		this.stock3investment = stock3investment;
+	}
+	
+	public void sendStocksDataToDatabase()
+	{	
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			DBConnection MyConnection = new DBConnection();
+			MyConnection.testConnection();
+			String command = "INSERT INTO investment (investmentTotal) VALUES (10000);";
+			MyConnection.executeUpdate(MyConnection.getConnection(), command);
+		} 
+		catch (SQLException | ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }

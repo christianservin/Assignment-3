@@ -1,15 +1,12 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import lib.DBDemo;
 import model.StocksModel;
 
 @WebServlet("/main")
@@ -189,7 +186,6 @@ public class StocksController extends HttpServlet
 		stocks.setStock3investment(Math.round((totStock3)*100.00)/100.00);
 		stocks.setInvestmentRemainder(Math.round((lastRemainder)*100.00)/100.00);
 		
-		DBDemo app = new DBDemo();
-		app.run();
+		stocks.sendStocksDataToDatabase();
 	}
 }

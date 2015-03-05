@@ -38,7 +38,7 @@ import java.util.Properties;
  * 
  * java.net.ConnectException: Connection refused
  */
-public class DBDemo {
+public class DBConnection {
 
 	/** The name of the MySQL account to use (or empty for anonymous) */
 	private final String userName = "stocks";
@@ -55,16 +55,14 @@ public class DBDemo {
 	/** The name of the database we are testing with (this default is installed with MySQL) */
 	private final String dbName = "stocks";
 	
-	/** The name of the table we are testing with */
-	private final String tableName = "investment";
-	
 	/**
 	 * Get a new database connection
 	 * 
 	 * @return
 	 * @throws SQLException
 	 */
-	public Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException 
+	{
 		Connection conn = null;
 		Properties connectionProps = new Properties();
 		connectionProps.put("user", this.userName);
@@ -83,64 +81,48 @@ public class DBDemo {
 	 * 
 	 * @throws SQLException If something goes wrong
 	 */
-	public boolean executeUpdate(Connection conn, String command) throws SQLException {
+	public boolean executeUpdate(Connection conn, String command) throws SQLException 
+	{
 	    Statement stmt = null;
-	    try {
+	    try 
+	    {
 	        stmt = conn.createStatement();
 	        stmt.executeUpdate(command); // This will throw a SQLException if it fails
 	        return true;
-	    } finally {
-
+	    } 
+	    finally 
+	    {
 	    	// This will run whether we throw an exception or not
 	        if (stmt != null) { stmt.close(); }
 	    }
 	}
 	
 	/**
-	 * Connect to MySQL and do some stuff.
+	 * Test Connection to MySQL.
 	 */
-	public void run() {
-
-		// Connect to MySQL
+	public Boolean testConnection() 
+	{
 		Connection conn = null;
-		try {
+		try 
+		{
 			conn = this.getConnection();
 			System.out.println("Connected to database");
-		} catch (SQLException e) {
+			return true;
+		} 
+		catch (SQLException e) 
+		{
 			System.out.println("ERROR: Could not connect to the database");
 			e.printStackTrace();
-			return;
+			return false;
 		}
-
-		// Create a table
-		try {
-		    String createString =
-			        "INSERT INTO stocks.investment (investmentTotal) VALUES (1000.00)";
-			this.executeUpdate(conn, createString);
-			//System.out.println("Created a table");
-	    } catch (SQLException e) {
-			System.out.println("ERROR: Could not insert into the table");
-			e.printStackTrace();
-			return;
-		}
-		
-		// Drop the table
-//		try {
-//		    String dropString = "DROP TABLE " + this.tableName;
-//			this.executeUpdate(conn, dropString);
-//			System.out.println("Dropped the table");
-//	    } catch (SQLException e) {
-//			System.out.println("ERROR: Could not drop the table");
-//			e.printStackTrace();
-//			return;
-//		}
 	}
 	
 	/**
 	 * Connect to the DB and do some stuff
 	 */
-//	public static void main(String[] args) {
-//		DBDemo app = new DBDemo();
-//		app.run();
-//	}
+	public static void main(String[] args) 
+	{
+		DBConnection app = new DBConnection();
+		app.testConnection();
+	}
 }
