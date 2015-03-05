@@ -115,39 +115,32 @@ public class DBDemo {
 		// Create a table
 		try {
 		    String createString =
-			        "CREATE TABLE " + this.tableName + " ( " +
-			        "ID INTEGER NOT NULL, " +
-			        "NAME varchar(40) NOT NULL, " +
-			        "STREET varchar(40) NOT NULL, " +
-			        "CITY varchar(20) NOT NULL, " +
-			        "STATE char(2) NOT NULL, " +
-			        "ZIP char(5), " +
-			        "PRIMARY KEY (ID))";
+			        "INSERT INTO stocks.investment (investmentTotal) VALUES (1000.00)";
 			this.executeUpdate(conn, createString);
-			System.out.println("Created a table");
+			//System.out.println("Created a table");
 	    } catch (SQLException e) {
-			System.out.println("ERROR: Could not create the table");
+			System.out.println("ERROR: Could not insert into the table");
 			e.printStackTrace();
 			return;
 		}
 		
 		// Drop the table
-		try {
-		    String dropString = "DROP TABLE " + this.tableName;
-			this.executeUpdate(conn, dropString);
-			System.out.println("Dropped the table");
-	    } catch (SQLException e) {
-			System.out.println("ERROR: Could not drop the table");
-			e.printStackTrace();
-			return;
-		}
+//		try {
+//		    String dropString = "DROP TABLE " + this.tableName;
+//			this.executeUpdate(conn, dropString);
+//			System.out.println("Dropped the table");
+//	    } catch (SQLException e) {
+//			System.out.println("ERROR: Could not drop the table");
+//			e.printStackTrace();
+//			return;
+//		}
 	}
 	
 	/**
 	 * Connect to the DB and do some stuff
 	 */
-	public static void main(String[] args) {
-		DBDemo app = new DBDemo();
-		app.run();
-	}
+//	public static void main(String[] args) {
+//		DBDemo app = new DBDemo();
+//		app.run();
+//	}
 }
