@@ -1,83 +1,48 @@
-$('#datatable').editableTableWidget();
-
-$(document).ready(function() {
-	main();
-});
-
-function main() {
-	piechart(document.getElementById("stock1").innerHTML, 
-			document.getElementById("stock2").innerHTML,
-			document.getElementById("stock3").innerHTML,
-			parseFloat(document.getElementById("stock1investment").innerHTML),
-			parseFloat(document.getElementById("stock2investment").innerHTML),
-			parseFloat(document.getElementById("stock3investment").innerHTML),
-			parseFloat(document.getElementById("investmentRemainder").innerHTML));
-	barchart();
-}
-
 function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
 {	
-	$('#piechart').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Pie Chart'
-        },
-        tooltip: {
-            //pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: '$',
-            data: [
-                [stock1,   		stock1value],
-                [stock2,   		stock2value],
-                [stock3,   		stock3value],
-                ['Remainder',   remainder]
-            ]
-        }]
-    });
+	google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Stock', 		'Price'],
+        [stock1,     	stock1value],
+        [stock2,      	stock2value],
+        [stock1,  		stock3value],
+        ['Remainder',  	remainder]
+      ]);
+
+      var options = {
+        title: ''
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
 }
 
-function barchart() 
+function barchart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
 {
-	$('#barchart').highcharts({
-        data: {
-            table: 'datatable'
-        },
+	google.load("visualization", "1.1", {packages:["bar"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Stock', 		'Price'],
+        [stock1,     	stock1value],
+        [stock2,      	stock2value],
+        [stock1,  		stock3value],
+        ['Remainder',  	remainder]
+      ]);
+
+      var options = {
         chart: {
-            type: 'column'
+          title: ''
         },
-        title: {
-            text: 'Bar Chart'
-        },
-        yAxis: {
-            allowDecimals: false,
-            title: {
-                text: ''
-            }
-        },
-        tooltip: {
-            formatter: function () {
-                return '<b>' + this.series.name + '</b><br/>' +
-                    this.point.y + ' ' + this.point.name.toLowerCase();
-            }
-        }
-    });
+        bars: 'vertical' // Required for Material Bar Charts.
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('barchart'));
+
+      chart.draw(data, options);
+    }
 }

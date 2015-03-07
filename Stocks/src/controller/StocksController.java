@@ -185,7 +185,5 @@ public class StocksController extends HttpServlet
 		stocks.setStock2investment(Math.round((totStock2)*100.00)/100.00);
 		stocks.setStock3investment(Math.round((totStock3)*100.00)/100.00);
 		stocks.setInvestmentRemainder(Math.round((lastRemainder)*100.00)/100.00);
-		
-		stocks.sendStocksDataToDatabase();
 	}
 }

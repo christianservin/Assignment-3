@@ -38,7 +38,7 @@ import java.util.Properties;
  * 
  * java.net.ConnectException: Connection refused
  */
-public class DBConnection {
+public class Database {
 
 	/** The name of the MySQL account to use (or empty for anonymous) */
 	private final String userName = "stocks";
@@ -102,10 +102,9 @@ public class DBConnection {
 	 */
 	public Boolean testConnection() 
 	{
-		Connection conn = null;
 		try 
 		{
-			conn = this.getConnection();
+			this.getConnection();
 			System.out.println("Connected to database");
 			return true;
 		} 
@@ -122,7 +121,7 @@ public class DBConnection {
 	 */
 	public static void main(String[] args) 
 	{
-		DBConnection app = new DBConnection();
-		app.testConnection();
+		Database db = new Database();
+		db.testConnection();
 	}
 }

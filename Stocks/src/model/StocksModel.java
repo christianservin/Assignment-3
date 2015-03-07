@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.SQLException;
-
 import lib.YahooStockDAO;
-import lib.DBConnection;
 
 public class StocksModel 
 {
@@ -34,6 +31,30 @@ public class StocksModel
 		this.stock2price = Math.round((double)(YahooStockDAO.getInstance().getStockPrice(stock2).getPrice())*100.00)/100.00;
 		this.stock3price = Math.round((double)(YahooStockDAO.getInstance().getStockPrice(stock3).getPrice())*100.00)/100.00;
 	}
+
+	public StocksModel(double investmentTotal, double investmentRemainder,
+			String stock1, String stock2, String stock3, double stock1price,
+			double stock2price, double stock3price, int stock1shares,
+			int stock2shares, int stock3shares, double stock1investment,
+			double stock2investment, double stock3investment) {
+		super();
+		this.investmentTotal = investmentTotal;
+		this.investmentRemainder = investmentRemainder;
+		this.stock1 = stock1;
+		this.stock2 = stock2;
+		this.stock3 = stock3;
+		this.stock1price = stock1price;
+		this.stock2price = stock2price;
+		this.stock3price = stock3price;
+		this.stock1shares = stock1shares;
+		this.stock2shares = stock2shares;
+		this.stock3shares = stock3shares;
+		this.stock1investment = stock1investment;
+		this.stock2investment = stock2investment;
+		this.stock3investment = stock3investment;
+	}
+
+
 
 
 	public double getInvestmentTotal() {
@@ -173,21 +194,5 @@ public class StocksModel
 
 	public void setStock3investment(double stock3investment) {
 		this.stock3investment = stock3investment;
-	}
-	
-	public void sendStocksDataToDatabase()
-	{	
-		try 
-		{
-			Class.forName("com.mysql.jdbc.Driver");
-			DBConnection MyConnection = new DBConnection();
-			MyConnection.testConnection();
-			String command = "INSERT INTO investment (investmentTotal) VALUES (10000);";
-			MyConnection.executeUpdate(MyConnection.getConnection(), command);
-		} 
-		catch (SQLException | ClassNotFoundException e) 
-		{
-			e.printStackTrace();
-		}
 	}
 }
