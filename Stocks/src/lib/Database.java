@@ -90,6 +90,11 @@ public class Database {
 	        stmt.executeUpdate(command); // This will throw a SQLException if it fails
 	        return true;
 	    } 
+	    catch (SQLException e)
+	    {
+	    	e.printStackTrace();
+			return false;
+	    }
 	    finally 
 	    {
 	    	// This will run whether we throw an exception or not

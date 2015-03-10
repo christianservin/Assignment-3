@@ -59,8 +59,8 @@
 			</tbody>
 		</table>
 		<input type="submit" value="Submit" onclick="main()" />
+		<a href="DBSelect.jsp">Select From DB</a>
 	</form>
-	<!-- 	<button onclick="main()">Save</button> -->
 	<br>
 
 	<div class="chartsContainer">
@@ -78,9 +78,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>
-	<!-- <script src="http://code.highcharts.com/highcharts.js"></script> -->
-	<!-- <script src="http://code.highcharts.com/modules/data.js"></script> -->
-	<!-- <script src="js/mindmup-editabletable.js"></script> -->
 	<script src="js/Stocks.js"></script>
 
 	<script type="text/javascript">
