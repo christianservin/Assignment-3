@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>SELECT Stocks</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
  
@@ -17,7 +18,7 @@
 SELECT * from investment order by investment_id asc;
 </sql:query>
  
-<table border="1">
+<table class="table table-bordered">
 <tr>
    <th>Investment Total</th>
    <th>Investment Remainder</th>
@@ -54,5 +55,7 @@ SELECT * from investment order by investment_id asc;
 </c:forEach>
 </table>
  
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
