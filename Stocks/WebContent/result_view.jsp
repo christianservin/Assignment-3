@@ -14,7 +14,7 @@
 
 	<h1>Stocks Investment Results</h1>
 
-	<form action="database" method="post">
+	<form action="database" method="post" id="stockresults">
 		<div>
 			<div id="heading">
 				<h3>Total Investment:</h3>
@@ -82,8 +82,8 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			piechart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
-			barchart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
+			piechart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1shares()%>,<%=stocks.getStock2shares()%>,<%=stocks.getStock3shares()%>,<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
+			barchart("<%=stocks.getStock1()%>","<%=stocks.getStock2()%>","<%=stocks.getStock3()%>",<%=stocks.getStock1shares()%>,<%=stocks.getStock2shares()%>,<%=stocks.getStock3shares()%>,<%=stocks.getStock1investment()%>,<%=stocks.getStock2investment()%>,<%=stocks.getStock3investment()%>,<%=stocks.getInvestmentRemainder()%>);
 		});
 	</script>
 
