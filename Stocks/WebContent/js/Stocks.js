@@ -1,5 +1,3 @@
-var theStock;
-
 function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value, remainder) 
 {	
 	google.load("visualization", "1", {packages:["corechart"]});
