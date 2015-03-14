@@ -90,30 +90,29 @@ function changeValue(stock, chosenStock)
 	var stock2 = document.getElementById('stock2shares').value;
 	var stock3 = document.getElementById('stock3shares').value;
 	var stockvalue1 = document.getElementById('stock1investment').value;
-	var stockvalue2 = document.getElementById('stock1investment').value;
-	var stockvalue3 = document.getElementById('stock1investment').value;
+	var stockvalue2 = document.getElementById('stock2investment').value;
+	var stockvalue3 = document.getElementById('stock3investment').value;
 	var rem = document.getElementById('investmentRemainder').value;
 	var investmentTot = document.getElementById('investmentTotal').value;
 	
 	if(chosenStock == 1)
 	{
-		//alert("Stock " + stock);
+		
+		//alert("Price of  " +  stock + " = " + pricePerStock1 + " and you own " + stock1 + " shares" + " and your their total worth is " + stockvalue1);
 		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue1 + ', Shares =  ' + stock1,stock1);
 		if(newAmount)
 			{
-				var newTotal = pricePerStock * newAmount;
+				var newTotal = pricePerStock1 * newAmount;
 		
 				document.getElementById("stock1shares").value=newAmount; 
 				document.getElementById("stock1investment").value=newTotal;
-		
-				//alert("Stock " + stock + ", Stock 2 " + stock2 + ", Stock 3 " + stock3 + ", New Total " + newTotal + ", Stock Value 2 " + 
-				//stock2value + ", Stock Value 3 " +stock3value +", Remainder is " +rem);
-		
-				//alert("Stock " + stock);
-				//piechart(stock, stock2, stock3, newTotal, stock2value, stock3value, rem);
-				//barchart(stock, stock2, stock3, newTotal, stock2value, stock3value, rem);
+	
+				//alert(stock+", "+stock2 + ", "+stock3+", "+newTotal+", "+stockvalue2+", "+stockvalue3 +", " +rem);
+						
+				//piechart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
+				//barchart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
 			}
-			
+		//alert("this is a test");
 	}
 	else if(chosenStock == 2)
 	{
@@ -124,8 +123,8 @@ function changeValue(stock, chosenStock)
 			document.getElementById("stock2shares").value=newAmount; 
 			document.getElementById("stock2investment").value=newTotal;
 		
-			//piechart(stock1, stock, stock3, stock1value, newTotal, stock3value, rem);
-			//barchart(stock1, stock, stock3, stock1value, newTotal, stock3value, rem);
+			//piechart(stock1, stock, stock3, stockvalue1, newTotal, stockvalue3, rem);
+			//barchart(stock1, stock, stock3, stockvalue1, newTotal, stockvalue3, rem);
 		}
 	}
 	else if(chosenStock == 3)
@@ -137,8 +136,8 @@ function changeValue(stock, chosenStock)
 			document.getElementById("stock3shares").value=newAmount; 
 			document.getElementById("stock3investment").value=newTotal;
 			
-			//piechart(stock1, stock2, stock, stock1value, stock2value, newTotal, rem);
-			//barchart(stock1, stock2, stock, stock1value, stock2value, newTotal, rem);
+			//piechart(stock1, stock2, stock, stockvalue1, stockvalue2, newTotal, rem);
+			//barchart(stock1, stock2, stock, stockvalue1, stockvalue2, newTotal, rem);
 		}
 	}
 	
