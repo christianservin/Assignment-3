@@ -82,13 +82,15 @@ function barchart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
 
 function changeValue(stock, chosenStock)
 {
-	
+	var stock1 = document.getElementById('stock1').value;
+	var stock2 = document.getElementById('stock2').value;
+	var stock3 = document.getElementById('stock3').value;
 	var pricePerStock1 = document.getElementById('stock1price').value;
 	var pricePerStock2 = document.getElementById('stock2price').value;
 	var pricePerStock3 = document.getElementById('stock3price').value;
-	var stock1 = document.getElementById('stock1shares').value;
-	var stock2 = document.getElementById('stock2shares').value;
-	var stock3 = document.getElementById('stock3shares').value;
+	var stockShares1 = document.getElementById('stock1shares').value;
+	var stockShares2 = document.getElementById('stock2shares').value;
+	var stockShares3 = document.getElementById('stock3shares').value;
 	var stockvalue1 = document.getElementById('stock1investment').value;
 	var stockvalue2 = document.getElementById('stock2investment').value;
 	var stockvalue3 = document.getElementById('stock3investment').value;
@@ -99,27 +101,31 @@ function changeValue(stock, chosenStock)
 	{
 		
 		//alert("Price of  " +  stock + " = " + pricePerStock1 + " and you own " + stock1 + " shares" + " and your their total worth is " + stockvalue1);
-		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue1 + ', Shares =  ' + stock1,stock1);
+		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue1 + ', Shares =  ' + stockShares1,stockShares1);
 		if(newAmount)
 			{
-				var newTotal = pricePerStock1 * newAmount;
-		
+				var newTotal = parseFloat(Math.round((pricePerStock1 * newAmount)*100.00)/100.00).toFixed(2);
+				
 				document.getElementById("stock1shares").value=newAmount; 
 				document.getElementById("stock1investment").value=newTotal;
-	
-				//alert(stock+", "+stock2 + ", "+stock3+", "+newTotal+", "+stockvalue2+", "+stockvalue3 +", " +rem);
+				
+				
+				
+				piechart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
+				barchart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
+				
+				alert(stock+", "+stock2 + ", "+stock3+", "+newTotal+", "+stockvalue2+", "+stockvalue3 +", " +rem);
 						
-				//piechart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
-				//barchart(stock,stock2,stock3,newTotal,stockvalue2,stockvalue3,rem);
+				
 			}
-		//alert("this is a test");
+		
 	}
 	else if(chosenStock == 2)
 	{
-		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue2 + ', Shares =  ' + stock2,stock2);
+		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue2 + ', Shares =  ' + stockShares2,stockShares2);
 		if(newAmount)
 		{
-			var newTotal = pricePerStock2 * newAmount;
+			var newTotal = parseFloat(Math.round((pricePerStock2 * newAmount)*100.00)/100.00).toFixed(2);
 			document.getElementById("stock2shares").value=newAmount; 
 			document.getElementById("stock2investment").value=newTotal;
 		
@@ -129,10 +135,10 @@ function changeValue(stock, chosenStock)
 	}
 	else if(chosenStock == 3)
 	{
-		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue3 + ', Shares =  ' + stock3,stock3);
+		var newAmount = prompt('Please enter the new amount:  \n'+ 'Stock = '+ stock + ', Value = ' + stockvalue3 + ', Shares =  ' + stockShares3,stockShares3);
 		if(newAmount)
 		{
-			var newTotal = pricePerStock3 * newAmount;
+			var newTotal = parseFloat(Math.round((pricePerStock3 * newAmount)*100.00)/100.00).toFixed(2);
 			document.getElementById("stock3shares").value=newAmount; 
 			document.getElementById("stock3investment").value=newTotal;
 			
@@ -140,6 +146,7 @@ function changeValue(stock, chosenStock)
 			//barchart(stock1, stock2, stock, stockvalue1, stockvalue2, newTotal, rem);
 		}
 	}
-	
-	
+		
 }
+
+
