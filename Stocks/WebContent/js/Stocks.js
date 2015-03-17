@@ -8,11 +8,11 @@ function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
     function drawPieChart() {
       var Piechartdata = null;
       Piechartdata = new google.visualization.arrayToDataTable([
-        ['Stock', 		'Price'],
-        [stock1,     	parseFloat(stock1value)],
-        [stock2,      	parseFloat(stock2value)],
-        [stock3,  		parseFloat(stock3value)],
-        ['Rem',  		parseFloat(remainder)]
+        ['Stock', 	'Price'],
+        [stock1,    parseFloat(stock1value)],
+        [stock2,    parseFloat(stock2value)],
+        [stock3,  	parseFloat(stock3value)],
+        ['Rem',  	parseFloat(remainder)]
       ]);
 
       var Piechartoptions = {
@@ -39,6 +39,7 @@ function piechart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
       google.visualization.events.addListener(Piechart, 'select', PiechartselectHandler); 
       Piechart.draw(Piechartdata, Piechartoptions);
     }
+    
     drawPieChart();
 }
 
@@ -50,10 +51,10 @@ function barchart(stock1, stock2, stock3, stock1value, stock2value, stock3value,
     {
       var Barchartdata = null;
       Barchartdata = new google.visualization.arrayToDataTable([
-        ['Stock', 		'Price'],
-        [stock1, parseFloat(stock1value)],
-        [stock2, parseFloat(stock2value)],
-        [stock3, parseFloat(stock3value)],
+        ['Stock', 	'Price'],
+        [stock1, 	parseFloat(stock1value)],
+        [stock2, 	parseFloat(stock2value)],
+        [stock3, 	parseFloat(stock3value)],
         ['Rem',  	parseFloat(remainder)]
       ]);
 
@@ -116,8 +117,7 @@ function changeValue(stock, chosenStock)
 			document.getElementById("stock1shares").value=newAmount; 
 			document.getElementById("stock1investment").value=newTotal;
 			
-			calcNewTotalAndRemainderInvestment();
-			updateCharts();
+			RecalculateAndUpdateCharts();
 		}
 	}
 	else if(chosenStock == 2)
@@ -129,8 +129,7 @@ function changeValue(stock, chosenStock)
 			document.getElementById("stock2shares").value=newAmount; 
 			document.getElementById("stock2investment").value=newTotal;
 			
-			calcNewTotalAndRemainderInvestment();
-			updateCharts();
+			RecalculateAndUpdateCharts();
 		}
 	}
 	else if(chosenStock == 3)
@@ -142,52 +141,44 @@ function changeValue(stock, chosenStock)
 			document.getElementById("stock3shares").value=newAmount; 
 			document.getElementById("stock3investment").value=newTotal;
 			
-			calcNewTotalAndRemainderInvestment();
-			updateCharts();
+			RecalculateAndUpdateCharts();
 		}
 	}
 		
 }
 
-function updateCharts() 
-{
-	var stock1 = document.getElementById('stock1').value;
-	var stock2 = document.getElementById('stock2').value;
-	var stock3 = document.getElementById('stock3').value;
-	var stock1price = document.getElementById('stock1price').value;
-	var stock2price = document.getElementById('stock2price').value;
-	var stock3price = document.getElementById('stock3price').value;
-	var stock1shares = document.getElementById('stock1shares').value;
-	var stock2shares = document.getElementById('stock2shares').value;
-	var stock3shares = document.getElementById('stock3shares').value;
-	var stock1investment = document.getElementById('stock1investment').value;
-	var stock2investment = document.getElementById('stock2investment').value;
-	var stock3investment = document.getElementById('stock3investment').value;
-	var investmentRemainder = document.getElementById('investmentRemainder').value;
-	var investmentTotal = document.getElementById('investmentTotal').value;
-	
-	piechart(stock1, stock2, stock3, stock1investment, stock2investment, stock3investment, investmentRemainder);
-	barchart(stock1, stock2, stock3, stock1investment, stock2investment, stock3investment, investmentRemainder);
-}
-
-function calcNewTotalAndRemainderInvestment()
+function RecalculateAndUpdateCharts()
 {	
 	var stock1 = document.getElementById('stock1').value;
 	var stock2 = document.getElementById('stock2').value;
 	var stock3 = document.getElementById('stock3').value;
-	var stock1price = document.getElementById('stock1price').value;
-	var stock2price = document.getElementById('stock2price').value;
-	var stock3price = document.getElementById('stock3price').value;
-	var stock1shares = document.getElementById('stock1shares').value;
-	var stock2shares = document.getElementById('stock2shares').value;
-	var stock3shares = document.getElementById('stock3shares').value;
+	var stock1price = parseFloat(document.getElementById('stock1price').value);
+	var stock2price = parseFloat(document.getElementById('stock2price').value);
+	var stock3price = parseFloat(document.getElementById('stock3price').value);
+	var stock1shares = parseFloat(document.getElementById('stock1shares').value);
+	var stock2shares = parseFloat(document.getElementById('stock2shares').value);
+	var stock3shares = parseFloat(document.getElementById('stock3shares').value);
+
+	
+	//update table
+	var newStock1Investment = parseFloat(stock1price*stock1shares)
+	document.getElementById('stock1investment').value = newStock1Investment;
+	
+	var newStock2Investment = parseFloat(stock2price*stock2shares)
+	document.getElementById('stock2investment').value = newStock2Investment;
+	
+	var newStock3Investment = parseFloat(stock3price*stock3shares)
+	document.getElementById('stock3investment').value = newStock3Investment;
+	
+	
 	var stock1investment = parseFloat(document.getElementById('stock1investment').value);
 	var stock2investment = parseFloat(document.getElementById('stock2investment').value);
 	var stock3investment = parseFloat(document.getElementById('stock3investment').value);
 	
+	
+	//find new total and remainder
 	var newInvestmentTotal = parseFloat(stock1investment + stock2investment + stock3investment);
 	document.getElementById('investmentTotal').value = newInvestmentTotal;
-	
 	
 	if (parseFloat(newInvestmentTotal) < parseFloat(InitialInvestmentTotal))
 	{
@@ -199,4 +190,9 @@ function calcNewTotalAndRemainderInvestment()
 		var newInvestmentRemainder = parseFloat(0);
 		document.getElementById('investmentRemainder').value = newInvestmentRemainder;
 	}
+	
+	
+	//update charts
+	piechart(stock1, stock2, stock3, stock1investment, stock2investment, stock3investment, newInvestmentRemainder);
+	barchart(stock1, stock2, stock3, stock1investment, stock2investment, stock3investment, newInvestmentRemainder);
 }
